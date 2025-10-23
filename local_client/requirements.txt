@@ -1,0 +1,3 @@
+requests==2.31.0
+tenseal==0.3.25
+numpy==1.24.3 

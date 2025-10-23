@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Encrypted Analytics-as-a-Service</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🔐 Encrypted Analytics-as-a-Service</h1>
+            <p>Privacy-Preserving Data Analysis Platform using Homomorphic Encryption & Secure ML</p>
+        </header>
+
+        <div class="main-content">
+            <!-- File Upload Section -->
+            <div class="upload-section">
+                <h2>📁 Upload Encrypted Data</h2>
+                <div class="upload-area" id="uploadArea">
+                    <div class="upload-content">
+                        <div class="upload-icon">📄</div>
+                        <p>Drag and drop your encrypted data file here</p>
+                        <p>or</p>
+                        <input type="file" id="fileInput" accept=".json,.txt,.bin" style="display: none;">
+                        <button class="upload-btn" onclick="document.getElementById('fileInput').click()">
+                            Choose File
+                        </button>
+                    </div>
+                </div>
+                <div id="fileInfo" class="file-info" style="display: none;">
+                    <p>Selected file: <span id="fileName"></span></p>
+                    <p>File size: <span id="fileSize"></span></p>
+                </div>
+            </div>
+
+            <!-- Analysis Options -->
+            <div class="analysis-section">
+                <h2>🧮 Choose Analysis Type</h2>
+                <div class="analysis-options">
+                    <div class="option-card" data-operation="average">
+                        <h3>📊 Average</h3>
+                        <p>Calculate the mean of encrypted values</p>
+                    </div>
+                    <div class="option-card" data-operation="sum">
+                        <h3>➕ Sum</h3>
+                        <p>Calculate the sum of encrypted values</p>
+                    </div>
+                    <div class="option-card" data-operation="variance">
+                        <h3>📈 Variance</h3>
+                        <p>Calculate the variance of encrypted values</p>
+                    </div>
+                    <div class="option-card" data-operation="count">
+                        <h3>🔢 Count</h3>
+                        <p>Count the number of encrypted values</p>
+                    </div>
+                    <div class="option-card" data-operation="logistic_regression">
+                        <h3>🏥 Disease Prediction</h3>
+                        <p>Predict disease probability using encrypted features</p>
+                    </div>
+                    <div class="option-card" data-operation="linear_regression">
+                        <h3>📈 Linear Prediction</h3>
+                        <p>Predict continuous values using encrypted features</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Execute Button -->
+            <div class="execute-section">
+                <button id="executeBtn" class="execute-btn" disabled>
+                    🚀 Execute Secure Analysis
+                </button>
+            </div>
+
+            <!-- Results Section -->
+            <div class="results-section" id="resultsSection" style="display: none;">
+                <h2>📊 Analysis Results</h2>
+                <div class="results-content">
+                    <div class="result-card">
+                        <h3>🔐 Encrypted Result</h3>
+                        <div class="result-value" id="encryptedResult"></div>
+                    </div>
+                    <div class="result-card">
+                        <h3>🔓 Decrypted Result</h3>
+                        <div class="result-value" id="decryptedResult"></div>
+                    </div>
+                </div>
+                <div class="chart-container">
+                    <canvas id="resultChart"></canvas>
+                </div>
+            </div>
+
+            <!-- Status Section -->
+            <div class="status-section">
+                <div id="statusMessage" class="status-message"></div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
