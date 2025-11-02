@@ -16,11 +16,8 @@ router = APIRouter(prefix="/compute", tags=["computation"])
 class EncryptedDataRequest(BaseModel):
     encrypted_vectors: List[str]
     public_key: str
-<<<<<<< HEAD
     column_index: Optional[int] = None  # Index of column to analyze (0-based). If None, analyzes all columns
     column_name: Optional[str] = None  # Name of column to analyze (alternative to column_index)
-=======
->>>>>>> 5202ab7ed05bdf7efe18c1057aa3ee8ac560a285
     metadata: Optional[Dict[str, Any]] = None
 
 class ComputationResponse(BaseModel):
@@ -34,7 +31,6 @@ class ComputationResponse(BaseModel):
 async def compute_average(request: EncryptedDataRequest):
     """
     Compute the average of encrypted vectors using homomorphic encryption
-<<<<<<< HEAD
     
     NOTE: Statistical operations are performed column-wise. 
     Each row is encrypted as a vector with multiple columns, and this computes
@@ -42,8 +38,6 @@ async def compute_average(request: EncryptedDataRequest):
     
     Use column_index or column_name to specify which column to analyze.
     If neither is specified, returns average across all columns.
-=======
->>>>>>> 5202ab7ed05bdf7efe18c1057aa3ee8ac560a285
     """
     try:
         # Validate input data
@@ -53,17 +47,12 @@ async def compute_average(request: EncryptedDataRequest):
         # Get encryption utilities
         he_utils = get_encryption_utils()
         
-<<<<<<< HEAD
         # Perform homomorphic average computation (column-wise)
-=======
-        # Perform homomorphic average computation
->>>>>>> 5202ab7ed05bdf7efe18c1057aa3ee8ac560a285
         encrypted_result = he_utils.compute_average(
             request.encrypted_vectors,
             request.public_key
         )
         
-<<<<<<< HEAD
         # Format response with column information
         response_data = format_encrypted_result(encrypted_result, "average")
         response_data["metadata"] = request.metadata or {}
@@ -75,13 +64,6 @@ async def compute_average(request: EncryptedDataRequest):
         
         column_info = f"column_index={request.column_index}" if request.column_index is not None else "all columns"
         logger.info(f"Average computation completed for {len(request.encrypted_vectors)} vectors ({column_info})")
-=======
-        # Format response
-        response_data = format_encrypted_result(encrypted_result, "average")
-        response_data["metadata"] = request.metadata
-        
-        logger.info(f"Average computation completed for {len(request.encrypted_vectors)} vectors")
->>>>>>> 5202ab7ed05bdf7efe18c1057aa3ee8ac560a285
         
         return ComputationResponse(**response_data)
         
@@ -93,7 +75,6 @@ async def compute_average(request: EncryptedDataRequest):
 async def compute_sum(request: EncryptedDataRequest):
     """
     Compute the sum of encrypted vectors using homomorphic encryption
-<<<<<<< HEAD
     
     NOTE: Statistical operations are performed column-wise. 
     Each row is encrypted as a vector with multiple columns, and this computes
@@ -101,8 +82,6 @@ async def compute_sum(request: EncryptedDataRequest):
     
     Use column_index or column_name to specify which column to analyze.
     If neither is specified, returns sum across all columns.
-=======
->>>>>>> 5202ab7ed05bdf7efe18c1057aa3ee8ac560a285
     """
     try:
         # Validate input data
@@ -112,17 +91,12 @@ async def compute_sum(request: EncryptedDataRequest):
         # Get encryption utilities
         he_utils = get_encryption_utils()
         
-<<<<<<< HEAD
         # Perform homomorphic sum computation (column-wise)
-=======
-        # Perform homomorphic sum computation
->>>>>>> 5202ab7ed05bdf7efe18c1057aa3ee8ac560a285
         encrypted_result = he_utils.compute_sum(
             request.encrypted_vectors,
             request.public_key
         )
         
-<<<<<<< HEAD
         # Format response with column information
         response_data = format_encrypted_result(encrypted_result, "sum")
         response_data["metadata"] = request.metadata or {}
@@ -134,13 +108,6 @@ async def compute_sum(request: EncryptedDataRequest):
         
         column_info = f"column_index={request.column_index}" if request.column_index is not None else "all columns"
         logger.info(f"Sum computation completed for {len(request.encrypted_vectors)} vectors ({column_info})")
-=======
-        # Format response
-        response_data = format_encrypted_result(encrypted_result, "sum")
-        response_data["metadata"] = request.metadata
-        
-        logger.info(f"Sum computation completed for {len(request.encrypted_vectors)} vectors")
->>>>>>> 5202ab7ed05bdf7efe18c1057aa3ee8ac560a285
         
         return ComputationResponse(**response_data)
         
@@ -152,7 +119,6 @@ async def compute_sum(request: EncryptedDataRequest):
 async def compute_variance(request: EncryptedDataRequest):
     """
     Compute the variance of encrypted vectors using homomorphic encryption
-<<<<<<< HEAD
     
     NOTE: Statistical operations are performed column-wise. 
     Each row is encrypted as a vector with multiple columns, and this computes
@@ -160,8 +126,6 @@ async def compute_variance(request: EncryptedDataRequest):
     
     Use column_index or column_name to specify which column to analyze.
     If neither is specified, returns variance across all columns.
-=======
->>>>>>> 5202ab7ed05bdf7efe18c1057aa3ee8ac560a285
     """
     try:
         # Validate input data
@@ -171,17 +135,12 @@ async def compute_variance(request: EncryptedDataRequest):
         # Get encryption utilities
         he_utils = get_encryption_utils()
         
-<<<<<<< HEAD
         # Perform homomorphic variance computation (column-wise)
-=======
-        # Perform homomorphic variance computation
->>>>>>> 5202ab7ed05bdf7efe18c1057aa3ee8ac560a285
         encrypted_result = he_utils.compute_variance(
             request.encrypted_vectors,
             request.public_key
         )
         
-<<<<<<< HEAD
         # Format response with column information
         response_data = format_encrypted_result(encrypted_result, "variance")
         response_data["metadata"] = request.metadata or {}
@@ -193,13 +152,6 @@ async def compute_variance(request: EncryptedDataRequest):
         
         column_info = f"column_index={request.column_index}" if request.column_index is not None else "all columns"
         logger.info(f"Variance computation completed for {len(request.encrypted_vectors)} vectors ({column_info})")
-=======
-        # Format response
-        response_data = format_encrypted_result(encrypted_result, "variance")
-        response_data["metadata"] = request.metadata
-        
-        logger.info(f"Variance computation completed for {len(request.encrypted_vectors)} vectors")
->>>>>>> 5202ab7ed05bdf7efe18c1057aa3ee8ac560a285
         
         return ComputationResponse(**response_data)
         

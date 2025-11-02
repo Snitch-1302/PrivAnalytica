@@ -46,10 +46,7 @@ LOGISTIC_REGRESSION_WEIGHTS = {
 async def predict_logistic_regression(request: EncryptedFeaturesRequest):
     """
     Perform logistic regression prediction on encrypted features
-<<<<<<< HEAD
     NOTE: This model only works with medical data (age, blood_pressure, cholesterol)
-=======
->>>>>>> 5202ab7ed05bdf7efe18c1057aa3ee8ac560a285
     """
     try:
         # Validate input data
@@ -59,7 +56,6 @@ async def predict_logistic_regression(request: EncryptedFeaturesRequest):
         }):
             raise HTTPException(status_code=400, detail="Invalid encrypted data format")
         
-<<<<<<< HEAD
         # Validate that this is medical data
         dataset_name = request.metadata.get("filename", "").lower() if request.metadata else ""
         dataset_type = request.metadata.get("dataset_type", "").lower() if request.metadata else ""
@@ -79,8 +75,6 @@ async def predict_logistic_regression(request: EncryptedFeaturesRequest):
                        f"Received dataset: {dataset_name or 'unknown'}"
             )
         
-=======
->>>>>>> 5202ab7ed05bdf7efe18c1057aa3ee8ac560a285
         # Get encryption utilities
         he_utils = get_encryption_utils()
         
@@ -104,11 +98,8 @@ async def predict_logistic_regression(request: EncryptedFeaturesRequest):
         
         return PredictionResponse(**response_data)
         
-<<<<<<< HEAD
     except HTTPException:
         raise
-=======
->>>>>>> 5202ab7ed05bdf7efe18c1057aa3ee8ac560a285
     except Exception as e:
         logger.error(f"Error in logistic regression prediction: {e}")
         raise HTTPException(status_code=500, detail=f"Prediction failed: {str(e)}")
@@ -117,10 +108,7 @@ async def predict_logistic_regression(request: EncryptedFeaturesRequest):
 async def predict_linear_regression(request: EncryptedFeaturesRequest):
     """
     Perform linear regression prediction on encrypted features
-<<<<<<< HEAD
     NOTE: This model only works with medical data (age, blood_pressure, cholesterol)
-=======
->>>>>>> 5202ab7ed05bdf7efe18c1057aa3ee8ac560a285
     """
     try:
         # Validate input data
@@ -130,7 +118,6 @@ async def predict_linear_regression(request: EncryptedFeaturesRequest):
         }):
             raise HTTPException(status_code=400, detail="Invalid encrypted data format")
         
-<<<<<<< HEAD
         # Validate that this is medical data
         dataset_name = request.metadata.get("filename", "").lower() if request.metadata else ""
         dataset_type = request.metadata.get("dataset_type", "").lower() if request.metadata else ""
@@ -150,8 +137,6 @@ async def predict_linear_regression(request: EncryptedFeaturesRequest):
                        f"Received dataset: {dataset_name or 'unknown'}"
             )
         
-=======
->>>>>>> 5202ab7ed05bdf7efe18c1057aa3ee8ac560a285
         # Get encryption utilities
         he_utils = get_encryption_utils()
         
@@ -174,11 +159,8 @@ async def predict_linear_regression(request: EncryptedFeaturesRequest):
         
         return PredictionResponse(**response_data)
         
-<<<<<<< HEAD
     except HTTPException:
         raise
-=======
->>>>>>> 5202ab7ed05bdf7efe18c1057aa3ee8ac560a285
     except Exception as e:
         logger.error(f"Error in linear regression prediction: {e}")
         raise HTTPException(status_code=500, detail=f"Prediction failed: {str(e)}")
