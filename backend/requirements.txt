@@ -1,0 +1,9 @@
+fastapi
+uvicorn[standard]
+python-multipart
+tenseal
+numpy
+scikit-learn
+pydantic
+requests
+pandas

@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Logs & Reports - Homomorphic Privacy Platform</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🔐 Encrypted Analytics-as-a-Service</h1>
+            <p>Privacy-Preserving Data Analysis Platform using Homomorphic Encryption & Secure ML</p>
+            <nav class="main-nav">
+                <a href="index.html" class="nav-link">Dashboard</a>
+                <a href="logs.html" class="nav-link active">Logs & Reports</a>
+            </nav>
+        </header>
+
+        <div class="main-content">
+            <!-- Status Messages -->
+            <div id="messageContainer" class="status-section"></div>
+
+            <!-- Operations Overview Section -->
+            <div class="dashboard-section">
+                <h2>📊 Operations Overview</h2>
+                <div id="statsCards" class="stats-cards">
+                    <!-- Stats cards will be inserted here by JavaScript -->
+                </div>
+            </div>
+            <!-- Logs Section -->
+            <div class="logs-section">
+                <h2>📝 Operation Logs</h2>
+                
+                <div class="section-header">
+                    <div class="filter-controls">
+                        <select id="operationTypeFilter" class="filter-select">
+                            <option value="">All Operations</option>
+                            <option value="compute">Computation</option>
+                            <option value="model">Machine Learning</option>
+                            <option value="system">System</option>
+                        </select>
+                        <select id="statusFilter" class="filter-select">
+                            <option value="">All Statuses</option>
+                            <option value="success">Success</option>
+                            <option value="error">Error</option>
+                        </select>
+                    </div>
+                    <button id="refreshLogsBtn" class="refresh-btn">🔄 Refresh</button>
+                </div>
+                
+                <div class="logs-table-container">
+                    <table class="logs-table">
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Operation</th>
+                                <th>Timestamp</th>
+                                <th>Duration</th>
+                                <th>Status</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody id="logsTableBody">
+                            <!-- Logs will be populated here -->
+                        </tbody>
+                    </table>
+                </div>
+                
+                <div id="pagination" class="pagination">
+                    <!-- Pagination controls will be inserted here by JavaScript -->
+                </div>
+            </div>
+
+            <!-- Reports Section -->
+            <div class="reports-section">
+                <h2>📄 Generated Reports</h2>
+                
+                <div class="section-header">
+                    <div></div> <!-- Empty div for flex spacing -->
+                    <button id="generateReportBtn" class="generate-btn">📊 Generate New Report</button>
+                </div>
+                
+                <div class="reports-list" id="reportsList">
+                    <!-- Reports will be populated here -->
+                </div>
+            </div>
+
+            <!-- Log Details Modal -->
+            <div id="logDetailsModal" class="modal">
+                <div class="modal-content">
+                    <span class="close-btn">&times;</span>
+                    <h2>Log Details</h2>
+                    <div id="logDetailsContent"></div>
+                </div>
+            </div>
+
+
+        </div>
+    </div>
+
+    <script src="logs.js"></script>
+</body>
+</html>
