@@ -2,8 +2,11 @@
 let selectedFile = null;
 let selectedOperation = null;
 let chart = null;
+<<<<<<< HEAD
 let encryptedData = null; // Store encrypted data from JSON files
 let demoKeys = null; // Store demo keys for decryption simulation
+=======
+>>>>>>> 5202ab7ed05bdf7efe18c1057aa3ee8ac560a285
 
 // API base URL
 const API_BASE_URL = 'http://localhost:8000';
@@ -19,6 +22,7 @@ const resultsSection = document.getElementById('resultsSection');
 const encryptedResult = document.getElementById('encryptedResult');
 const decryptedResult = document.getElementById('decryptedResult');
 const statusMessage = document.getElementById('statusMessage');
+<<<<<<< HEAD
 const columnSelectionSection = document.getElementById('columnSelectionSection');
 const columnSelect = document.getElementById('columnSelect');
 const columnInfo = document.getElementById('columnInfo');
@@ -62,6 +66,8 @@ const datasetColumns = {
         ]
     }
 };
+=======
+>>>>>>> 5202ab7ed05bdf7efe18c1057aa3ee8ac560a285
 
 // Initialize the application
 document.addEventListener('DOMContentLoaded', function() {
@@ -128,15 +134,21 @@ function handleDrop(event) {
     }
 }
 
+<<<<<<< HEAD
 async function processSelectedFile(file) {
     selectedFile = file;
     encryptedData = null; // Reset encrypted data
+=======
+function processSelectedFile(file) {
+    selectedFile = file;
+>>>>>>> 5202ab7ed05bdf7efe18c1057aa3ee8ac560a285
     
     // Update UI
     fileName.textContent = file.name;
     fileSize.textContent = formatFileSize(file.size);
     fileInfo.style.display = 'block';
     
+<<<<<<< HEAD
     try {
         const text = await file.text();
         
@@ -240,6 +252,12 @@ function populateColumnSelector(filename) {
     }
 }
 
+=======
+    showStatus(`File "${file.name}" selected successfully!`, 'success');
+    updateExecuteButton();
+}
+
+>>>>>>> 5202ab7ed05bdf7efe18c1057aa3ee8ac560a285
 function formatFileSize(bytes) {
     if (bytes === 0) return '0 Bytes';
     const k = 1024;
@@ -248,6 +266,7 @@ function formatFileSize(bytes) {
     return parseFloat((bytes / Math.pow(k, i)).toFixed(2)) + ' ' + sizes[i];
 }
 
+<<<<<<< HEAD
 function getColumnName(filename, columnIndex) {
     const datasetType = detectDatasetType(filename);
     if (datasetType && datasetColumns[datasetType]) {
@@ -347,6 +366,8 @@ function simulateDecryption(encryptedResult, operation, encryptedData, columnInd
     return 'N/A (Decrypt with secret key to see result)';
 }
 
+=======
+>>>>>>> 5202ab7ed05bdf7efe18c1057aa3ee8ac560a285
 // Analysis option selection
 function selectAnalysisOption(selectedCard) {
     // Remove previous selection
@@ -361,6 +382,7 @@ function selectAnalysisOption(selectedCard) {
     // Display operation description
     displayOperationDescription(selectedOperation);
     
+<<<<<<< HEAD
     // Show/hide column selector based on operation type
     const isStatisticalOperation = ['average', 'sum', 'variance', 'count'].includes(selectedOperation);
     if (isStatisticalOperation && selectedFile) {
@@ -371,6 +393,8 @@ function selectAnalysisOption(selectedCard) {
         columnSelectionSection.style.display = 'none';
     }
     
+=======
+>>>>>>> 5202ab7ed05bdf7efe18c1057aa3ee8ac560a285
     showStatus(`Selected analysis: ${selectedOperation}`, 'info');
     updateExecuteButton();
 }
@@ -379,6 +403,7 @@ function displayOperationDescription(operation) {
     const descriptions = {
         average: {
             title: "📊 Statistical Average",
+<<<<<<< HEAD
             description: "Calculate the mean of a specific column across all rows using homomorphic encryption. Operations are performed column-wise.",
             algorithm: "Sum all column values / Count of rows",
             security: "🔐 Fully encrypted computation (column-wise)"
@@ -394,6 +419,23 @@ function displayOperationDescription(operation) {
             description: "Calculate statistical variance for a specific column on encrypted data. Operations are performed column-wise.",
             algorithm: "Mean squared deviation from mean (column-wise)",
             security: "🔐 Privacy-preserving statistics (column-wise)"
+=======
+            description: "Calculate the mean of encrypted values using homomorphic encryption. The server never sees the actual data values.",
+            algorithm: "Sum all values / Count of values",
+            security: "🔐 Fully encrypted computation"
+        },
+        sum: {
+            title: "➕ Secure Summation", 
+            description: "Add all encrypted values together without decrypting them. Perfect for financial calculations.",
+            algorithm: "Homomorphic addition of all values",
+            security: "🔐 Zero-knowledge summation"
+        },
+        variance: {
+            title: "📈 Encrypted Variance",
+            description: "Calculate statistical variance on encrypted data. Useful for understanding data spread.",
+            algorithm: "Mean squared deviation from mean",
+            security: "🔐 Privacy-preserving statistics"
+>>>>>>> 5202ab7ed05bdf7efe18c1057aa3ee8ac560a285
         },
         count: {
             title: "🔢 Secure Counting",
@@ -403,13 +445,21 @@ function displayOperationDescription(operation) {
         },
         logistic_regression: {
             title: "🏥 Disease Prediction",
+<<<<<<< HEAD
             description: "Predict disease probability using encrypted medical features. Features: age, blood pressure, cholesterol. ⚠️ REQUIRES MEDICAL DATA ONLY",
+=======
+            description: "Predict disease probability using encrypted medical features. Features: age, blood pressure, cholesterol.",
+>>>>>>> 5202ab7ed05bdf7efe18c1057aa3ee8ac560a285
             algorithm: "Encrypted dot product + sigmoid",
             security: "🔐 Secure ML inference"
         },
         linear_regression: {
             title: "📈 Linear Prediction",
+<<<<<<< HEAD
             description: "Predict continuous values using encrypted medical features (age, blood_pressure, cholesterol). ⚠️ REQUIRES MEDICAL DATA ONLY",
+=======
+            description: "Predict continuous values using encrypted features. Outputs numerical predictions.",
+>>>>>>> 5202ab7ed05bdf7efe18c1057aa3ee8ac560a285
             algorithm: "Encrypted linear combination",
             security: "🔐 Privacy-preserving ML"
         }
@@ -490,6 +540,7 @@ async function callBackendAPI(operation, file) {
 
         // Handle ML operations with real API calls
         if (operation === 'logistic_regression' || operation === 'linear_regression') {
+<<<<<<< HEAD
             // Check if this is medical data
             const isMedicalData = file.name.toLowerCase().includes('medical');
             
@@ -502,6 +553,8 @@ async function callBackendAPI(operation, file) {
                 );
             }
             
+=======
+>>>>>>> 5202ab7ed05bdf7efe18c1057aa3ee8ac560a285
             // Create mock encrypted features for demo
             const mockFeatures = [
                 "encrypted_feature_1_sample_1",
@@ -516,8 +569,12 @@ async function callBackendAPI(operation, file) {
                 metadata: {
                     demo: true,
                     filename: file.name,
+<<<<<<< HEAD
                     operation: operation,
                     dataset_type: "medical"
+=======
+                    operation: operation
+>>>>>>> 5202ab7ed05bdf7efe18c1057aa3ee8ac560a285
                 }
             };
 
@@ -538,6 +595,7 @@ async function callBackendAPI(operation, file) {
             
             // Extract prediction from encrypted result
             const prediction = result.encrypted_predictions[0];
+<<<<<<< HEAD
             
             // Compute deterministic prediction from actual medical data if available
             let decryptedValue = null;
@@ -586,19 +644,29 @@ async function callBackendAPI(operation, file) {
                     decryptedValue = (50 + (seed / 10) % 100).toFixed(1);
                 }
             }
+=======
+            const decryptedValue = operation === 'logistic_regression' ? 
+                (0.3 + Math.random() * 0.6).toFixed(3) : // Probability between 0.3-0.9
+                (50 + Math.random() * 100).toFixed(1);    // Value between 50-150
+>>>>>>> 5202ab7ed05bdf7efe18c1057aa3ee8ac560a285
 
             return {
                 encrypted: prediction,
                 decrypted: decryptedValue,
                 description: operation === 'logistic_regression' ? 
                     "Disease prediction probability" : 
+<<<<<<< HEAD
                     "Linear regression prediction",
                 actualFeatures: actualFeatures // Store for chart
+=======
+                    "Linear regression prediction"
+>>>>>>> 5202ab7ed05bdf7efe18c1057aa3ee8ac560a285
             };
         }
 
         // Handle statistical operations with real API calls
         if (['average', 'sum', 'variance', 'count'].includes(operation)) {
+<<<<<<< HEAD
             // Use actual encrypted data if available, otherwise use mock
             let encryptedVectors = [];
             let publicKey = "mock_public_key_for_demo";
@@ -634,6 +702,22 @@ async function callBackendAPI(operation, file) {
                     note: selectedColumnIndex !== null ? 
                         `Computing ${operation} for column index ${selectedColumnIndex} (${selectedColumnName || 'unknown'})` :
                         "Statistical operations are computed column-wise across all rows"
+=======
+            // Create mock encrypted data for the request
+            const mockEncryptedVectors = [
+                "encrypted_vector_1_sample_1234",
+                "encrypted_vector_2_sample_5678",
+                "encrypted_vector_3_sample_9012"
+            ];
+            
+            const requestData = {
+                encrypted_vectors: mockEncryptedVectors,
+                public_key: "mock_public_key_for_demo",
+                metadata: {
+                    demo: true,
+                    filename: file.name,
+                    operation: operation
+>>>>>>> 5202ab7ed05bdf7efe18c1057aa3ee8ac560a285
                 }
             };
 
@@ -654,6 +738,7 @@ async function callBackendAPI(operation, file) {
             
             // Extract result from encrypted response
             const encryptedResult = result.encrypted_result;
+<<<<<<< HEAD
             
             // Simulate decryption of the encrypted result
             // In real homomorphic encryption, this would decrypt using the secret key
@@ -667,11 +752,21 @@ async function callBackendAPI(operation, file) {
             } else if (selectedColumnIndex !== null) {
                 description = `${operation.charAt(0).toUpperCase() + operation.slice(1)} of column index ${selectedColumnIndex}`;
             }
+=======
+            const decryptedValue = operation === 'average' ? '42.5' :
+                                 operation === 'sum' ? '1250.75' :
+                                 operation === 'variance' ? '156.25' :
+                                 operation === 'count' ? '100' : '0';
+>>>>>>> 5202ab7ed05bdf7efe18c1057aa3ee8ac560a285
 
             return {
                 encrypted: encryptedResult,
                 decrypted: decryptedValue,
+<<<<<<< HEAD
                 description: description
+=======
+                description: `${operation.charAt(0).toUpperCase() + operation.slice(1)} of encrypted values`
+>>>>>>> 5202ab7ed05bdf7efe18c1057aa3ee8ac560a285
             };
         }
 
@@ -694,6 +789,7 @@ async function simulateAnalysis(file, operation) {
 
 // Display results
 function displayResults(result) {
+<<<<<<< HEAD
     // Display encrypted result (show truncated if too long)
     const encryptedText = result.encrypted || '';
     if (encryptedText.length > 100) {
@@ -711,6 +807,10 @@ function displayResults(result) {
         decryptedResult.textContent = decryptedText;
     }
     
+=======
+    encryptedResult.textContent = result.encrypted;
+    decryptedResult.textContent = result.decrypted;
+>>>>>>> 5202ab7ed05bdf7efe18c1057aa3ee8ac560a285
     resultsSection.style.display = 'block';
     
     // Create chart
@@ -768,6 +868,7 @@ function createResultChart(result) {
             }]
         };
     } else if (selectedOperation === 'linear_regression') {
+<<<<<<< HEAD
         chartType = 'bar'; // Use bar chart for clearer comparison
         const prediction = parseFloat(result.decrypted) || 0;
         
@@ -843,6 +944,20 @@ function createResultChart(result) {
             }
         });
         return; // Exit early since we created the chart
+=======
+        chartType = 'line';
+        const prediction = parseFloat(result.decrypted) || 0;
+        chartData = {
+            labels: ['Feature 1', 'Feature 2', 'Feature 3', 'Prediction'],
+            datasets: [{
+                label: 'Values',
+                data: [65, 150, 220, prediction],
+                borderColor: 'rgba(102, 126, 234, 1)',
+                backgroundColor: 'rgba(102, 126, 234, 0.2)',
+                tension: 0.1
+            }]
+        };
+>>>>>>> 5202ab7ed05bdf7efe18c1057aa3ee8ac560a285
     }
     
     // Create new chart

@@ -131,6 +131,7 @@ class HomomorphicEncryption:
             Base64 encoded encrypted average
         """
         try:
+<<<<<<< HEAD
             # Check if this is a mock/demo key or if deserialization fails
             is_demo_key = False
             if public_key == "mock_public_key_for_demo":
@@ -154,6 +155,14 @@ class HomomorphicEncryption:
             
             # Real implementation would use the context here
             # For now, still return mock result for consistency
+=======
+            # Deserialize context
+            context_bytes = base64.b64decode(public_key)
+            context = ts.context_from(context_bytes)
+            
+            # For demo purposes, return mock encrypted average
+            # In production, this would perform actual homomorphic addition and division
+>>>>>>> 5202ab7ed05bdf7efe18c1057aa3ee8ac560a285
             mock_encrypted_avg = "encrypted_average_result_" + str(len(encrypted_vectors))
             return base64.b64encode(mock_encrypted_avg.encode()).decode('utf-8')
             
